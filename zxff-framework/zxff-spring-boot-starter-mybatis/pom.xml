@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.zhangxiaofanfan.cloud</groupId>
+    <artifactId>zxff-framework</artifactId>
+    <version>${revision}</version>
+  </parent>
+
+  <artifactId>zxff-spring-boot-starter-mybatis</artifactId>
+  <description>
+    封装 mybatis-plus 访问 mybatis 数据库使用的模块启动器
+  </description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.zhangxiaofanfan.cloud</groupId>
+      <artifactId>zxff-spring-boot-starter-web</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+    </dependency>
+
+    <!-- DB 相关 -->
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-3-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>dynamic-datasource-spring-boot3-starter</artifactId> <!-- 多数据源 -->
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.yulichang</groupId>
+      <artifactId>mybatis-plus-join-boot-starter</artifactId> <!-- MyBatis 联表查询 -->
+    </dependency>
+
+    <dependency>
+      <groupId>com.fhs-opensource</groupId> <!-- VO 数据翻译 -->
+      <artifactId>easy-trans-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fhs-opensource</groupId>
+      <artifactId>easy-trans-mybatis-plus-extend</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.zhangxiaofanfan.cloud</groupId>
+      <artifactId>zxff-common</artifactId>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>

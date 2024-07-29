@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>zxff-project</artifactId>
+  <groupId>com.zhangxiaofanfan.cloud</groupId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+
+  <name>zxff-project</name>
+  <description>
+    张小帆帆工作室项目根目录
+  </description>
+
+  <modules>
+    <!-- BOM 负责项目依赖管理 -->
+    <module>zxff-dependencies</module>
+
+    <!-- 封装系统子模块服务和通用模块 -->
+    <module>zxff-framework</module>
+
+    <!-- 独立对外提供的服务模块 -->
+    <module>zxff-module-gateway</module>            <!-- 网关服务 -->
+    <module>zxff-module-sso</module>                <!-- 系统登录服务 -->
+    <module>zxff-module-spring-boot-admin</module>  <!-- 监控服务 -->
+    <module>zxff-module-crontab</module>
+  </modules>
+
+  <properties>
+    <revision>1.0-SNAPSHOT</revision>
+    <java.version>17</java.version>
+    <coding.scheme>UTF-8</coding.scheme>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>${coding.scheme}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${coding.scheme}</project.reporting.outputEncoding>
+
+    <!-- 暂时没有办法保存在 BOM 中的属性 -->
+    <spring.boot.version>3.2.4</spring.boot.version>
+  </properties>
+
+  <!-- 父端项目控制顶层依赖 -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.zhangxiaofanfan.cloud</groupId>
+        <artifactId>zxff-dependencies</artifactId>
+        <version>${revision}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <!-- 使用 huawei / aliyun 的 Maven 源，提升下载速度 -->
+  <repositories>
+    <repository>
+      <id>huaweicloud</id>
+      <name>huawei</name>
+      <url>https://mirrors.huaweicloud.com/repository/maven/</url>
+    </repository>
+    <repository>
+      <id>aliyunmaven</id>
+      <name>aliyun</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </repository>
+  </repositories>
+</project>

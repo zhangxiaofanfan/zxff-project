@@ -1,0 +1,60 @@
+# 服务端口号
+server:
+  port: 8888
+
+spring:
+  active: local # 默认开启 dev 场景
+
+  application:
+    name: zxff-module-spring-boot-admin
+
+  # 安全认证
+  security:
+    user:
+      name: ${MONITOR_USER:zhangxiaofanfan}
+      password: ${MONITOR_PWD:zhangxiaofanfan}
+
+  cloud:
+    # nacos 注册中心配置
+    nacos:
+      username: nacos
+      password: nacos
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: zxff-${spring.active} # 命名空间。zxff-${spring.active}
+        group: sk-demo-group
+        metadata:
+          management:
+            context-path: ${management.endpoints.web.base-path}
+
+# 对外暴露监控端点配置
+# spring boot 监控 actuator
+management:
+  endpoints:
+    web:
+      base-path: /${spring.application.name}/monitor
+      exposure:
+        include: "*"
+    prometheus:
+      enabled: true
+  # 暴露 health 端点详情信息
+  endpoint:
+    health:
+      show-details: always
+  web:
+    server:
+      auto-time-requests: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+        step: 1ms
+        descriptions: true
+
+# 日志文件配置
+logging:
+  config: classpath:config/logback-spring.xml
+  file:
+    name: logs/${spring.application.name}.log

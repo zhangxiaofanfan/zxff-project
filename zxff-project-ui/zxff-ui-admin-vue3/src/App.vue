@@ -1,3 +1,10 @@
+<template>
+  <ConfigGlobal :size="currentSize">
+    <RouterView :class="greyMode ? `${prefixCls}-grey-mode` : ''" />
+    <routerSearch />
+  </ConfigGlobal>
+</template>
+
 <script lang="ts" setup>
 import { isDark } from '@/utils/is'
 import { useAppStore } from '@/store/modules/app'
@@ -25,15 +32,10 @@ const setDefaultTheme = () => {
 }
 setDefaultTheme()
 </script>
-<template>
-  <ConfigGlobal :size="currentSize">
-    <RouterView :class="greyMode ? `${prefixCls}-grey-mode` : ''" />
-    <routerSearch />
-  </ConfigGlobal>
-</template>
+
 <style lang="scss">
-//$prefix-cls: #{$namespace}-app;
-$prefix-cls: v-app;
+$prefix-cls: #{$namespace}-app;
+// $prefix-cls: v-app;
 
 .size {
   width: 100%;

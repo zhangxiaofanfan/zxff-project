@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>zxff-project</artifactId>
+    <groupId>com.zhangxiaofanfan.cloud</groupId>
+    <version>${revision}</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>zxff-module-sso</artifactId>
+  <packaging>pom</packaging>
+
+  <description>
+    为系统提供认证和权限相关的单点登录模块
+  </description>
+
+  <name>zxff-module-sso</name>
+  <modules>
+    <module>zxff-module-sso-api</module>  <!-- 对外提供 RPC 的服务接口定义 -->
+    <module>zxff-module-sso-biz</module>  <!-- 业务逻辑实现 -->
+  </modules>
+
+</project>

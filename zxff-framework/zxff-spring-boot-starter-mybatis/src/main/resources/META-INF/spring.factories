@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.zhangxiaofanfan.cloud.framework.mybatis.config.IdTypeEnvironmentPostProcessor

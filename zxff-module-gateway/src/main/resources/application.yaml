@@ -1,0 +1,72 @@
+# 服务端口号
+server:
+  port: 8000
+
+spring:
+  profiles:
+    active: local
+
+  application:
+    name: zxff-gateway-service
+
+  cloud:
+    # nacos 注册中心配置
+    nacos:
+      username: nacos
+      password: nacos
+      server-addr: ${zxff.machine.nacos-address:127.0.0.1:8848}
+      discovery:
+        namespace: zxff-${spring.profiles.active} # 命名空间。zxff-${spring.active}
+        group: zxff-project
+        metadata:
+          management:
+            context-path: ${management.endpoints.web.base-path}
+
+    # Spring Cloud Gateway 配置项，对应 GatewayProperties 类
+    gateway:
+      # 路由配置项，对应 RouteDefinition 数组
+      routes:
+        # user-server 服务
+        - id: zxff-sso-server
+          uri: lb://zxff-sso-server
+          predicates: # 断言，作为路由的匹配条件，对应 RouteDefinition 数组
+            - Path=/sso/**
+          filters:
+            - RewritePath=/sso/v3/api-docs, /v3/api-docs # 配置，保证转发到 /v3/api-docs
+
+knife4j:
+  # 聚合 Swagger 文档，参考 https://doc.xiaominfo.com/docs/action/springcloud-gateway 文档
+  gateway:
+    enabled: true
+    routes:
+      - name: zxff-sso-server
+        service-name: zxff-sso-server
+        url: /sso/v3/api-docs
+
+# 对外暴露监控端点配置
+# spring boot 监控 actuator
+management:
+  endpoints:
+    web:
+      base-path: /${spring.application.name}/monitor
+      exposure:
+        include: "*"
+    prometheus:
+      enabled: true
+  web:
+    server:
+      auto-time-requests: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+        step: 1ms
+        descriptions: true
+
+# 日志文件配置
+logging:
+  config: classpath:config/logback-spring.xml
+  file:
+    name: logs/${spring.application.name}.log

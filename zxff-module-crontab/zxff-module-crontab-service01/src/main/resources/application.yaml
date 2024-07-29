@@ -1,0 +1,60 @@
+# 服务端口号
+server:
+  port: 8997
+
+spring:
+  active: dev # 默认开启 dev 场景
+
+  application:
+    name: zxff-skywalking-corntab-service01
+
+  cloud:
+    # nacos 注册中心配置
+    nacos:
+      username: nacos
+      password: nacos
+      server-addr: 127.0.0.1:8848
+      grpc-port-offset: 100 # 自定义参数, 为了向环境变量注入 nacos main 端口偏移量来查找 grpc 端口,已做通信
+      discovery:
+        namespace: zxff-dev # 命名空间。zxff-${spring.active}
+        group: sk-demo-group
+
+# 对外暴露监控端点配置
+# springboot监控actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    prometheus:
+      enabled: true
+  web:
+    server:
+      auto-time-requests: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+        step: 1ms
+        descriptions: true
+
+# 日志文件配置
+logging:
+  config: classpath:config/logback-spring.xml
+  file:
+    name: logs/${spring.application.name}.log
+
+# xxl-job 配置信息
+xxl:
+  job:
+    admin.addresses: http://127.0.0.1:8998/xxl-job-admin # xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+    accessToken: xdclass.net
+    executor:
+      appname: ${spring.application.name}
+      address: ''
+      ip: ''
+      port: 8996
+      logpath: logs/xxl-job/jobhandler
+      logretentiondays: 30

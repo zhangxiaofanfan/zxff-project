@@ -286,6 +286,7 @@ const doSocialLogin = async (type: number) => {
     message.error('此方式未配置')
   } else {
     loginLoading.value = true
+    // 先关闭 租户 功能
     if (loginData.tenantEnable === 'true') {
       // 尝试先通过 tenantName 获取租户
       await getTenantId()

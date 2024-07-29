@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>zxff-module-sso</artifactId>
+    <groupId>com.zhangxiaofanfan.cloud</groupId>
+    <version>${revision}</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>jar</packaging>
+
+  <name>${project.artifactId}</name>
+  <artifactId>zxff-module-sso-api</artifactId>
+  <dependencies>
+    <dependency>
+      <groupId>com.zhangxiaofanfan.cloud</groupId>
+      <artifactId>zxff-common</artifactId>
+    </dependency>
+
+    <!-- RPC 远程调用相关 -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+
+    <!-- Web 相关 -->
+    <dependency>
+      <groupId>org.springdoc</groupId> <!-- 接口文档：使用最新版本的 Swagger 模型 -->
+      <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.fhs-opensource</groupId>
+      <artifactId>easy-trans-anno</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

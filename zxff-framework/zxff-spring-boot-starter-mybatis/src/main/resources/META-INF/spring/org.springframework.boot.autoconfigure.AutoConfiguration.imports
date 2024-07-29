@@ -1,0 +1,3 @@
+com.zhangxiaofanfan.cloud.framework.datasource.config.ZxffDataSourceAutoConfiguration
+com.zhangxiaofanfan.cloud.framework.mybatis.config.ZxffMybatisAutoConfiguration
+com.zhangxiaofanfan.cloud.framework.translate.config.ZxffTranslateAutoConfiguration

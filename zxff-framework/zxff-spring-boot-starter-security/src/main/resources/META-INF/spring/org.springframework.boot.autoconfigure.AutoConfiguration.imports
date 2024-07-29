@@ -1,0 +1,5 @@
+com.zhangxiaofanfan.cloud.framework.security.config.ZxffSecurityRpcAutoConfiguration
+com.zhangxiaofanfan.cloud.framework.security.config.ZxffSecurityAutoConfiguration
+com.zhangxiaofanfan.cloud.framework.security.config.adapter.ZxffWebSecurityConfigurerAdapter
+com.zhangxiaofanfan.cloud.framework.operatelog.config.ZxffOperateLogConfiguration
+com.zhangxiaofanfan.cloud.framework.operatelog.config.ZxffOperateLogRpcAutoConfiguration
